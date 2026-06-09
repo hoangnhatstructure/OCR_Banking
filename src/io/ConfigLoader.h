@@ -8,7 +8,7 @@ namespace fs = std::filesystem;
 
 class ConfigLoader {
 public:
-    AppData load(const fs::path& root);
+    AppData load(const fs::path& configFolder);
 private:
     std::vector<CaseConfig> loadControl(const fs::path& path);
     std::vector<FieldDef> loadFields(const fs::path& path);

@@ -6,11 +6,11 @@
 
 namespace lcocr {
 
-AppData ConfigLoader::load(const fs::path& root) {
+AppData ConfigLoader::load(const fs::path& configFolder) {
     AppData data;
-    data.cases = loadControl(root / "config" / "Control.csv");
-    data.fields = loadFields(root / "config" / "field_dictionary.csv");
-    data.aliases = loadAliases(root / "config" / "alias_dictionary.csv");
+    data.cases = loadControl(configFolder / "Control.csv");
+    data.fields = loadFields(configFolder / "field_dictionary.csv");
+    data.aliases = loadAliases(configFolder / "alias_dictionary.csv");
     return data;
 }
 
