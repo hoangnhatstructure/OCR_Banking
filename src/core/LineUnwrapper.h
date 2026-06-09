@@ -8,7 +8,7 @@ namespace lcocr {
 
 class LineUnwrapper {
 public:
-    std::vector<std::string> unwrap(const std::vector<OCRPage>& pages, const std::vector<AliasDef>& aliases) const;
+    std::vector<PageTextLine> unwrap(const std::vector<OCRPage>& pages, const std::vector<AliasDef>& aliases) const;
 private:
     bool startsWithAlias(const std::string& line, const std::vector<AliasDef>& aliases) const;
 };

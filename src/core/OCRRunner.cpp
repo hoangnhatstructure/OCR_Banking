@@ -35,7 +35,9 @@ OCRPage OCRRunner::loadTextFile(const std::string& caseId, const fs::path& txtPa
     page.caseId = caseId;
     page.sourceFile = txtPath;
     page.pageNumber = 1;
-    page.lines = readLines(txtPath);
+    for (const auto& line : readLines(txtPath)) {
+        page.lines.push_back({ line, txtPath, 1 });
+    }
     return page;
 }
 

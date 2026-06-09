@@ -12,27 +12,38 @@ bool LineUnwrapper::startsWithAlias(const std::string& line, const std::vector<A
     return false;
 }
 
-std::vector<std::string> LineUnwrapper::unwrap(const std::vector<OCRPage>& pages, const std::vector<AliasDef>& aliases) const {
-    std::vector<std::string> result;
-    std::string buffer;
+std::vector<PageTextLine> LineUnwrapper::unwrap(const std::vector<OCRPage>& pages, const std::vector<AliasDef>& aliases) const {
+    std::vector<PageTextLine> result;
+    PageTextLine buffer;
+    bool hasBuffer = false;
 
     for (const auto& page : pages) {
         for (const auto& rawLine : page.lines) {
-            std::string line = trim(rawLine);
+            std::string line = trim(rawLine.text);
             if (line.empty()) continue;
 
             bool isNewField = startsWithAlias(line, aliases);
             if (isNewField) {
-                if (!buffer.empty()) result.push_back(buffer);
-                buffer = line;
+                if (hasBuffer) result.push_back(buffer);
+
+                buffer.text = line;
+                buffer.sourceFile = rawLine.sourceFile.empty() ? page.sourceFile : rawLine.sourceFile;
+                buffer.sourcePage = rawLine.sourcePage > 0 ? rawLine.sourcePage : page.pageNumber;
+                hasBuffer = true;
             } else {
-                if (!buffer.empty()) buffer += " " + line;
-                else buffer = line;
+                if (hasBuffer) {
+                    buffer.text += " " + line;
+                } else {
+                    buffer.text = line;
+                    buffer.sourceFile = rawLine.sourceFile.empty() ? page.sourceFile : rawLine.sourceFile;
+                    buffer.sourcePage = rawLine.sourcePage > 0 ? rawLine.sourcePage : page.pageNumber;
+                    hasBuffer = true;
+                }
             }
         }
     }
 
-    if (!buffer.empty()) result.push_back(buffer);
+    if (hasBuffer) result.push_back(buffer);
     return result;
 }
 

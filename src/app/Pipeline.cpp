@@ -56,7 +56,7 @@ void Pipeline::writeCombinedOCRText(const fs::path& outputPath, const std::vecto
 
     for (const auto& page : pages) {
         file << "===== SOURCE: " << page.sourceFile.u8string() << " PAGE: " << page.pageNumber << " =====\n";
-        for (const auto& line : page.lines) file << line << "\n";
+        for (const auto& line : page.lines) file << line.text << "\n";
         file << "\n";
     }
 }

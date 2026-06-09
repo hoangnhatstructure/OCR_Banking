@@ -40,11 +40,23 @@ struct InputDocument {
     InputFileType type = InputFileType::Unsupported;
 };
 
+struct OCRLine {
+    std::string text;
+    fs::path sourceFile;
+    int sourcePage = 1;
+};
+
+struct PageTextLine {
+    std::string text;
+    fs::path sourceFile;
+    int sourcePage = 1;
+};
+
 struct OCRPage {
     std::string caseId;
     fs::path sourceFile;
     int pageNumber = 1;
-    std::vector<std::string> lines;
+    std::vector<OCRLine> lines;
 };
 
 struct ExtractedField {

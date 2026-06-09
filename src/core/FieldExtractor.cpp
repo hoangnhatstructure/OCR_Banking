@@ -18,7 +18,7 @@ std::string FieldExtractor::extractValueAfterAlias(const std::string& line, cons
     return value;
 }
 
-std::vector<ExtractedField> FieldExtractor::extract(const std::string& caseId, const std::vector<std::string>& unwrappedLines, const std::vector<FieldDef>& fields, const std::vector<AliasDef>& aliases) const {
+std::vector<ExtractedField> FieldExtractor::extract(const std::string& caseId, const std::vector<PageTextLine>& unwrappedLines, const std::vector<FieldDef>& fields, const std::vector<AliasDef>& aliases) const {
     std::vector<ExtractedField> results;
 
     for (const auto& field : fields) {
@@ -33,7 +33,7 @@ std::vector<ExtractedField> FieldExtractor::extract(const std::string& caseId, c
             if (alias.fieldId != field.fieldId) continue;
 
             for (const auto& line : unwrappedLines) {
-                std::string value = extractValueAfterAlias(line, alias.alias);
+                std::string value = extractValueAfterAlias(line.text, alias.alias);
                 if (value.empty()) continue;
 
                 if (alias.priority < bestPriority) {
@@ -44,6 +44,8 @@ std::vector<ExtractedField> FieldExtractor::extract(const std::string& caseId, c
                     double score = 0.85 * aliasScore;
                     if (field.criticality == "operational") score -= 0.10;
                     out.confidence = std::clamp(score, 0.0, 1.0);
+                    out.sourceFile = line.sourceFile.u8string();
+                    out.sourcePage = line.sourcePage;
                 }
             }
         }
