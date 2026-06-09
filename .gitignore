@@ -1,0 +1,16 @@
+build/
+*.exe
+*.dll
+*.obj
+*.pdb
+*.ilk
+.vs/
+.vscode/
+workspace/output_audit/*.csv
+workspace/ocr_output/*
+workspace/temp/*
+workspace/logs/*
+!workspace/output_audit/.gitkeep
+!workspace/ocr_output/.gitkeep
+!workspace/temp/.gitkeep
+!workspace/logs/.gitkeep

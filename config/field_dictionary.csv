@@ -1,0 +1,13 @@
+field_id,field_name,required,criticality
+case_id,Case ID,0,supporting
+tf_ref,TF Ref / Unique ID,1,critical
+applicant,Applicant / Drawee,1,critical
+beneficiary,Beneficiary / Drawer,1,critical
+amount,Amount,1,critical
+currency,Currency,1,critical
+goods_description,Goods Description,1,operational
+port_loading,Port of Loading,0,supporting
+port_discharge,Port of Discharge,0,supporting
+origin_goods,Origin of Goods,0,supporting
+vessel_name,Ocean Vessel,0,supporting
+carrier,Name of Carrier,0,supporting

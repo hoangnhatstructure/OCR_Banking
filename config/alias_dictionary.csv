@@ -1,0 +1,33 @@
+field_id,alias,priority
+case_id,Case ID,1
+tf_ref,TF Ref,1
+tf_ref,Unique ID,2
+tf_ref,L/C No,3
+tf_ref,LC No,4
+applicant,Applicant / Drawee,1
+applicant,Applicant,2
+applicant,Buyer,3
+applicant,Importer,4
+beneficiary,Beneficiary / Drawer,1
+beneficiary,Beneficiary,2
+beneficiary,Exporter,3
+beneficiary,Seller,4
+amount,Amount,1
+amount,Invoice Amount,2
+amount,Total Amount,3
+currency,Currency,1
+goods_description,Description of Goods,1
+goods_description,Goods Description,2
+goods_description,Commodity,3
+goods_description,Description,4
+port_loading,Port of Loading,1
+port_loading,Loading Port,2
+port_discharge,Port of Discharge,1
+port_discharge,Destination Port,2
+port_discharge,Port of Destination,3
+origin_goods,Origin of Goods,1
+origin_goods,Origin,2
+vessel_name,Ocean Vessel,1
+vessel_name,Vessel,2
+carrier,Name of Carrier,1
+carrier,Carrier,2

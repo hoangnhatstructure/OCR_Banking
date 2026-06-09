@@ -1,0 +1,12 @@
+{
+  "note": "Prototype config. The v0.1 code uses CSV config directly. This JSON is reserved for the later installer/software version.",
+  "workspace_root": "workspace",
+  "temp_path": "workspace/temp",
+  "ocr_output_path": "workspace/ocr_output",
+  "audit_output_path": "workspace/output_audit",
+  "pdftoppm_path": "tools/poppler/pdftoppm.exe",
+  "tesseract_path": "tools/tesseract/tesseract.exe",
+  "pdf_render_dpi": 300,
+  "ocr_language": "eng",
+  "ocr_psm": 6
+}

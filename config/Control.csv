@@ -1,0 +1,2 @@
+case_id,input_folder,enabled,run_ocr,export_audit
+case_001,"workspace/input_documents/case 001",1,0,1
